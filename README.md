@@ -13,7 +13,7 @@ TODOS:
 * The Hacker News API endpoints are missing.
 
 Current Lighthouse stats without HTTP2:
-![lighthouse](lighthouse-stats.PNG "Lighthouse stats")
+![lighthouse](lighthouse-stats.png "Lighthouse stats")
 
 
 ## Development
