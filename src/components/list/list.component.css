@@ -1,0 +1,55 @@
+:host {
+  color: #666;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.pages {
+  text-align: center;
+  padding: 15px 0;
+  border-bottom: 2px #f2f2f2 solid;
+  margin-bottom: 10px;
+}
+
+.count {
+  padding: 0 15px;
+}
+
+.pages .next,
+.pages .prev {
+  color: inherit;
+  text-decoration: none;
+}
+
+.articles {
+  margin: auto;
+  max-width: 1200px;
+  padding: 0 15px;
+}
+
+article {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+article .no {
+  font-size: 1.6rem;
+  margin-right: 11px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+h2 a {
+  color: inherit;
+}
+
+.meta {
+  font-size: 0.85rem;
+}

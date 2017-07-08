@@ -1,0 +1,11 @@
+0.0.0.0:8082
+
+proxy / localhost:3200 {
+  except /assets /service-worker.js /index.html
+}
+
+proxy /api localhost:3200 {
+}
+
+gzip
+root ./dist/src

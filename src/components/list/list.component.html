@@ -1,0 +1,19 @@
+<div class="pages">
+  <a routerLink="./" [queryParams]="{page: prevPage}" [class.disabled]="page === 1" class="prev">&lt; pref</a>
+  <span class="count">{{ page }}/10</span>
+  <a routerLink="./" [queryParams]="{page: nextPage}" [class.disabled]="page === 10" class="next">next &gt;</a>
+</div>
+
+<section class="articles">
+  <article *ngFor="let c of content | async; let i = index; trackBy: trackByFn">
+    <span class="no">
+      {{ i+1 }}
+    </span>
+    <div>
+      <h2><a [href]="c.url">{{ c.title }}</a></h2>
+      <div class="meta">
+        {{ c.points }} points by {{ c.user }} {{ c.time_ago }} | <a [routerLink]="['/item', c.id]">{{ c.comments_count }} comments</a>
+      </div>
+    </div>
+  </article>
+</section>
