@@ -7,5 +7,7 @@ proxy / localhost:3200 {
 proxy /api localhost:3200 {
 }
 
+
+push / /dist/src/app.min.js
 gzip
 root ./dist/src
