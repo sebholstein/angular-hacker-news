@@ -1,13 +1,25 @@
 0.0.0.0:8082
 
-proxy / localhost:3200 {
-  except /assets /service-worker.js /index.html
-}
-
-proxy /api localhost:3200 {
-}
-
-
-push / /dist/src/app.min.js
+log stdout
 gzip
 root ./dist/src
+push / app.min.js
+
+proxy /api api:8090 localhost:8090 {
+  health_check /healthz
+  health_check_interval 5s
+  health_check_timeout 5s
+}
+
+proxy / localhost:3200 universal:3200 {
+  except /assets /service-worker.js /app.min.js /api
+  health_check /
+  health_check_interval 5s
+  health_check_timeout 5s
+}
+
+rewrite {
+    if {path} not_match ^/api
+    if {path} not_match ^/assets
+    to {path} {path} /{uri}
+}
