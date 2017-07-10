@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  webserver:
+    image: "angularhn/webserver:latest"
+    build:
+      context: .
+      dockerfile: Dockerfile.webserver
+    ports:
+      - "8082:8082"
+      - "8083:8082"
+    links:
+      - universal
+      - api
+    volumes:
+      - ./.caddy:/root/.caddy
+  universal:
+    image: "angularhn/universal:latest"
+    build:
+      context: .
+      dockerfile: Dockerfile.universal
+    ports:
+      - "3200:3200"
+  api:
+    image: "angularhn/api:latest"
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./hnapi:/etc/hnapi
