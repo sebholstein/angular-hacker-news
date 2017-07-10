@@ -1,0 +1,12 @@
+article {
+  max-width: 1600px;
+  margin: auto;
+  padding: 0 15px;
+}
+h2 {
+  margin-top: 10px;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}

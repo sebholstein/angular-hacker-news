@@ -4,6 +4,7 @@ var fs = require('fs');
 const files = [
   'index.html',
   'app.min.js',
+  '0.app.min.js',
   'assets/manifest.json',
   'assets/angular.svg'
 ];

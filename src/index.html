@@ -15,8 +15,13 @@
   <body>
     <angular-hacker-news>Loading...</angular-hacker-news>
     <script>
+      var sw = function() { navigator.serviceWorker.register('service-worker.js', {scope: '/'}); }
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('service-worker.js', {scope: '/'});
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(sw, {timeout: 5000});
+        } else {
+          window.addEventListener('load', sw);
+        }
       }
     </script>
   </body>

@@ -1,0 +1,14 @@
+.comment {
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px #ccc solid;
+}
+
+a {
+  color: inherit;
+}
+
+.meta {
+  font-size: 12px;
+  color: #999;
+}

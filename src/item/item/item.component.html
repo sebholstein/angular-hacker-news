@@ -1,0 +1,7 @@
+<article>
+  <h2><a [attr.href]="(itemToDisplay | async)?.url">{{ (itemToDisplay | async)?.title }}</a></h2>
+  ({{ (itemToDisplay | async)?.domain }}) - {{ (itemToDisplay | async)?.score }} points by {{ (itemToDisplay | async)?.user }}
+
+  <nghn-comment [comment]="c" *ngFor="let c of (itemToDisplay | async)?.comments">
+  </nghn-comment>
+</article>

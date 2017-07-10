@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { ListComponent } from './components/list/list.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     redirectTo: 'list/top',
@@ -14,13 +14,17 @@ const routes: Routes = [
   {
     path: 'list/:mode',
     component: ListComponent
+  },
+  {
+    path: 'item',
+    loadChildren: './item/item.module#ItemModule'
   }
 ];
 
 @NgModule({
   imports: [
     BrowserModule.withServerTransition({appId: 'NGHN'}),
-    RouterModule.forRoot(routes, {useHash: true}),
+    RouterModule.forRoot(routes),
     HttpModule
   ],
   declarations: [AppComponent, ListComponent],

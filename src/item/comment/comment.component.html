@@ -1,0 +1,9 @@
+<div *ngIf="comment" class="comment" [style.padding-left.px]="comment.level * 20">
+  <div class="meta">
+    <a [attr.href]="'https://news.ycombinator.com/user?id=' + comment.user">{{ comment.user }}</a> {{ comment.time_ago }}
+  </div>
+  <div class="content" [innerHTML]="comment.content"></div>
+
+  <nghn-comment *ngFor="let child of comment.comments" [comment]="child">
+  </nghn-comment>
+</div>
