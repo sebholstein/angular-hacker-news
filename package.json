@@ -4,20 +4,26 @@
   "description": "Hacker News PWA built with Angular",
   "main": "index.js",
   "scripts": {
-    "build": "npm run aot && npm run rollup && npm run cp:assets && npm run serviceworker && npm run build:server",
+    "build": "npm run webpack && npm run cp:assets && npm run brotli && npm run serviceworker && npm run build:server",
     "cp:assets": "cp src/index.html dist/src/index.html && cp -r src/assets/ dist/src/assets",
-    "aot": "ngc -p tsconfig.json",
     "build:server": "ngc -p tsconfig.server.json",
     "rollup": "rollup -c rollup.config.js",
+    "webpack": "webpack -p",
     "serviceworker": "sw-precache --config=sw-precache.config.js --verbose",
     "brotli": "node ./brotli-compress.js"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@ngtools/webpack": "^1.5.0",
+    "angular2-template-loader": "^0.6.2",
     "cp": "^0.2.0",
+    "google-closure-compiler": "^20170626.0.0",
+    "raw-loader": "^0.5.1",
     "sw-precache": "^5.2.0",
-    "typescript": "2.3"
+    "typescript": "2.3",
+    "webpack": "^3.1.0",
+    "webpack-closure-compiler": "^2.1.4"
   },
   "dependencies": {
     "@angular/animations": "^4.2.6",
@@ -27,6 +33,7 @@
     "@angular/core": "^4.2.6",
     "@angular/http": "^4.2.6",
     "@angular/platform-browser": "4",
+    "@angular/platform-browser-dynamic": "^4.2.6",
     "@angular/platform-server": "^4.2.6",
     "@angular/router": "^4.2.6",
     "brotli": "^1.3.2",
