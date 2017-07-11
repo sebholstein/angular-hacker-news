@@ -4,6 +4,7 @@ COPY dist /srv/dist
 COPY Caddyfile /srv/Caddyfile
 
 EXPOSE 80 443
+ENV CADDYPATH /root/.caddy
 
 VOLUME /root/.caddy
 
