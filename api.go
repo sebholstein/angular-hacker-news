@@ -140,13 +140,20 @@ func paging(w http.ResponseWriter, r *http.Request, s []*story) []*story {
 		return s
 	}
 	availablePages := int(math.Ceil(float64(len(s) / resultsPerPage)))
+	if len(s) > 0 && availablePages == 0 {
+		availablePages = 1
+	}
 	w.Header().Set("X-Pages", strconv.Itoa(int(availablePages)))
 	if p > availablePages {
-		w.WriteHeader(http.StatusNotFound)
 		return []*story{}
 	}
 	offset := (p * 30) - 30
-	list := s[offset : offset+30]
+	var list []*story
+	if len(s) < 30 {
+		list = s
+	} else {
+		list = s[offset : offset+30]
+	}
 	no := offset + 1
 	for _, st := range list {
 		st.No = no
