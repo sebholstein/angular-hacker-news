@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npm run webpack && npm run cp:assets && npm run brotli && npm run serviceworker && npm run build:server",
-    "cp:assets": "cp src/index.html dist/src/index.html && cp -r src/assets/ dist/src/assets",
+    "cp:assets": "cp src/index.html dist/src/index.html && cp src/favicon.ico dist/src/favicon.ico && cp -r src/assets/ dist/src/assets",
     "build:server": "ngc -p tsconfig.server.json",
     "rollup": "rollup -c rollup.config.js",
     "webpack": "webpack -p",
