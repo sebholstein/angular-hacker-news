@@ -1,8 +1,10 @@
 # Angular Hacker News PWA
 
-**[SEE IT LIVE HERE!](https://angularhn.sebastian-mueller.net)**
-
 A Hacker News clone / Progressive Web App (PWA) developed with Angular 4 for the [HNPWA](https://hnpwa.com/) project.
+
+**[SEE IT LIVE HERE!](https://angularhn.sebastian-mueller.net)**  
+
+*[Blog post with more details](https://sebastian-mueller.net/post/angular-hacker-news-pwa/)*
 
 ## Features
 * **Framework/UI libraries:** Angular 4, Angular Router, Angular HTTP
@@ -15,8 +17,6 @@ A Hacker News clone / Progressive Web App (PWA) developed with Angular 4 for the
 * **Other details:** Lazy loading of routes
 * **Author:** [Sebastian Müller](https://github.com/SebastianM)
 
-![screenshot](screenshot-iphone.PNG "Screenshot (iPhone/Safari)")
-
 ---
 
 ## Architecture
@@ -25,10 +25,10 @@ A Hacker News clone / Progressive Web App (PWA) developed with Angular 4 for the
 
 The application has 3 services that run in Docker containers on a [CoreOS Container Linux](https://coreos.com/products/container-linux-subscription/) in production.
 
-[Caddy](https://caddyserver.com/) is used as fast webserver and reverse proxy. It serves all static assets (js, images, ...) as Brotli/Gzip files to achieve fast download times.
+My [blog post](https://sebastian-mueller.net/post/angular-hacker-news-pwa/) has more details about the services and the architecture.
 
-Current Lighthouse stats without HTTP2:
-![lighthouse](lighthouse-stats.png "Lighthouse stats")
+## Current Lighthouse stats
+TODO
 
 ## Development
 1. Install Yarn, Java SDK, Go 1.8, [Caddy](https://caddyserver.com/), and NodeJS 8
