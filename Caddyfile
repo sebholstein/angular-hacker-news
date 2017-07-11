@@ -1,9 +1,22 @@
-0.0.0.0:8082
+angularhn.sebastian-mueller.net localhost:8081
+bind 0.0.0.0
 
 log stdout
 gzip
 root ./dist/src
-push / app.min.js
+
+push /list/top {
+  /app.min.js
+}
+push / {
+  /app.min.js
+}
+
+tls {
+  max_certs 10
+}
+
+header / Strict-Transport-Security "max-age=31536000;"
 
 proxy /api api:8090 localhost:8090 {
   health_check /healthz
@@ -12,14 +25,20 @@ proxy /api api:8090 localhost:8090 {
 }
 
 proxy / localhost:3200 universal:3200 {
-  except /assets /service-worker.js /app.min.js /api
+  except /assets /service-worker.js /app.min.js /api /favicon.ico
+  health_check /
+  health_check_interval 5s
+  health_check_timeout 5s
+}
+
+proxy /item localhost:3200 universal:3200 {
   health_check /
   health_check_interval 5s
   health_check_timeout 5s
 }
 
 rewrite {
-    if {path} not_match ^/api
-    if {path} not_match ^/assets
-    to {path} {path} /{uri}
+  if {path} not_match ^/api
+  if {path} not_match ^/assets
+  to {path} {path} /{uri}
 }
