@@ -21,7 +21,7 @@ A Hacker News clone / Progressive Web App (PWA) developed with Angular 4 for the
 
 ## Architecture
 
-![Architecture](architecture.svg "Architecture")
+![Architecture](architecture.png "Architecture")
 
 The application has 3 services that run in Docker containers on a [CoreOS Container Linux](https://coreos.com/products/container-linux-subscription/) in production.
 
