@@ -1,14 +1,14 @@
-.comment {
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 1px #ccc solid;
+:host {
+  display: block;
+  margin-bottom: 15px;
 }
-
 a {
   color: inherit;
 }
-
 .meta {
   font-size: 12px;
   color: #999;
+}
+.content p:first-child {
+  margin-top: 0;
 }

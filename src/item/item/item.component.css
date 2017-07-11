@@ -10,3 +10,8 @@ a {
   color: inherit;
   text-decoration: none;
 }
+.meta {
+  padding-bottom: 15px;
+  border-bottom: 1px #ccc solid;
+  margin-bottom: 15px;
+}

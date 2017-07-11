@@ -56,7 +56,7 @@ export class ListComponent {
       });
   }
 
-  trackByFn(_: number, item: any) {
+  trackByFn(_: number, item: any): number {
     return item.id;
   }
 

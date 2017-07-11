@@ -31,4 +31,8 @@ export class ItemComponent {
       })
       .first();
   }
+
+  trackByFn(_: number, item: any): number {
+    return item.id;
+  }
 }
