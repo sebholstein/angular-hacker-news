@@ -339,7 +339,7 @@ func storyCacheFileIsUpToDate(storyID int64) (bool, *story, error) {
 		return false, nil, err
 	}
 
-	before := time.Now().Unix() - int64(60*60*12)
+	before := time.Now().Unix() - int64(60*60)
 	t := s.CacheTime.Unix()
 	if t < before {
 		log.Printf("Story %d is too old in cache\n", s.Story.ID)
