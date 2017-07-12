@@ -1,5 +1,5 @@
 <div class="pages">
-  <a routerLink="./" [queryParams]="{page: prevPage}" [class.disabled]="page === 1" class="prev">&lt; pref</a>
+  <a routerLink="./" [queryParams]="{page: prevPage}" [class.disabled]="page === 1" class="prev">&lt; prev</a>
   <span class="count">{{ page }}/{{pages || 0}}</span>
   <a routerLink="./" [queryParams]="{page: nextPage}" [class.disabled]="page === 10" class="next">next &gt;</a>
 </div>
