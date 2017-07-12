@@ -1,11 +1,11 @@
-import { Component, ChangeDetectionStrategy, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, PLATFORM_ID, Inject, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
 import { isPlatformBrowser } from '@angular/common';
-import 'rxjs/add/operator/mergeMap';
+import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/first';
+import 'rxjs/add/operator/mergeMap';
 
 @Component({
   selector: 'nghn-item',
@@ -13,14 +13,20 @@ import 'rxjs/add/operator/first';
   styleUrls: ['item.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ItemComponent {
-  itemToDisplay: Observable<any>|null = null;
+export class ItemComponent implements OnDestroy {
+  itemToDisplay: any|null = null;
+  private _subscription: Subscription;
 
-  constructor(route: ActivatedRoute, http: Http, @Inject(PLATFORM_ID) _platformId) {
+  constructor(
+    route: ActivatedRoute,
+    http: Http,
+    cd: ChangeDetectorRef,
+    @Inject(PLATFORM_ID) _platformId
+  ) {
     if (isPlatformBrowser(_platformId) === false) {
       return;
     }
-    this.itemToDisplay = route.params
+    this._subscription = route.params
       .map(params => {
         return params.id;
       })
@@ -29,7 +35,16 @@ export class ItemComponent {
           return r.json();
         });
       })
-      .first();
+      .subscribe(item => {
+        this.itemToDisplay = item;
+        cd.markForCheck();
+      });
+  }
+
+  ngOnDestroy() {
+    if (this._subscription) {
+      this._subscription.unsubscribe();
+    }
   }
 
   trackByFn(_: number, item: any): number {

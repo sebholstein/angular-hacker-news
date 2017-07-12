@@ -1,9 +1,12 @@
-<article *ngIf="(itemToDisplay | async)?.title != null">
-  <h2><a [attr.href]="(itemToDisplay | async)?.url">{{ (itemToDisplay | async)?.title }}</a></h2>
+<article *ngIf="itemToDisplay?.title != null">
+  <h2><a [attr.href]="itemToDisplay.url">{{ itemToDisplay?.title }}</a></h2>
   <div class="meta">
-    ({{ (itemToDisplay | async)?.domain }}) - {{ (itemToDisplay | async)?.score }} points by {{ (itemToDisplay | async)?.user }}
+    <span *ngIf="itemToDisplay.domain != null">({{ itemToDisplay.domain }}) - </span>{{ itemToDisplay.score }} points by {{ itemToDisplay.user || itemToDisplay.by }}
   </div>
 
-  <nghn-comment [comment]="c" *ngFor="let c of (itemToDisplay | async)?.comments; trackBy: trackByFn">
+  <div *ngIf="itemToDisplay.comments == null ||itemToDisplay.comments.length === 0">
+    No comments
+  </div>
+  <nghn-comment [comment]="c" *ngFor="let c of itemToDisplay.comments; trackBy: trackByFn">
   </nghn-comment>
 </article>
