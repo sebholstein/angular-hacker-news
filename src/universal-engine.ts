@@ -8,7 +8,7 @@ export function ngUniversalEngine(setupOptions: any) {
 
   return function (filePath: string, options: { req: Request }, callback: (err: Error|null, html: string) => void) {
     let url: string = options.req.url;
-    if (url.startsWith('/index.html')) {
+    if (url.startsWith('/index.html') || url.startsWith('/item/')) {
       url = '/';
     }
     let html: string = outputCache[url];

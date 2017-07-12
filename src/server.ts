@@ -24,7 +24,7 @@ server.get(['/*.js', '/assets/*'], expressStaticGzip(__dirname, {
   enableBrotli: true
 }));
 // handle requests for routes in the app.  ngExpressEngine does the rendering.
-server.get(['/', '/list/:mode', 'item/:id', '/index.html'], (req, res) => {
+server.get(['/*'], (req, res) => {
     res.render('index.html', {req});
 });
 server.listen(3200, function () {
