@@ -31,12 +31,6 @@ proxy / localhost:3200 universal:3200 {
   health_check_timeout 5s
 }
 
-proxy /item localhost:3200 universal:3200 {
-  health_check /
-  health_check_interval 5s
-  health_check_timeout 5s
-}
-
 rewrite {
   if {path} not_match ^/api
   if {path} not_match ^/assets
