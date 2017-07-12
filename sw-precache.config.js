@@ -8,34 +8,15 @@ module.exports = {
     'dist/src/assets/*.svg',
   ],
   root: 'dist/src',
+  navigateFallback: '/',
   runtimeCaching: [
     {
-      urlPattern: '/list/:mode',
-      handler: 'fastest',
-      options: {
-        cache: {
-          maxEntries: 10,
-          name: 'list-cache'
-        }
-      }
-    },
-    {
-      urlPattern: '/item/:id',
-      handler: 'fastest',
-      options: {
-        cache: {
-          maxEntries: 10,
-          name: 'item-cache'
-        }
-      }
-    },
-    {
       urlPattern: '/api/item/:id',
-      handler: 'fastest',
+      handler: 'cacheFirst',
       options: {
         cache: {
           maxEntries: 50,
-          name: 'api-cache'
+          name: 'item-cache'
         }
       }
     },
